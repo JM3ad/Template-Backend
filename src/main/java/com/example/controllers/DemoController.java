@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoController {
 
-    //@Autowired
-    //private PersonService personService;
+    @Autowired
+    private PersonService personService;
 
     @RequestMapping("/")
     String index() {
@@ -21,10 +21,7 @@ public class DemoController {
 
     @RequestMapping("/person")
     Person person() throws NotFoundException {
-        return null;/* personService
-                .list()
-                .stream()
-                .findFirst()
-                .orElseThrow(() -> new NotFoundException("Missing person!"));*/
+        return personService
+                .get();
     }
 }
